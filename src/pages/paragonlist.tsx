@@ -16,7 +16,7 @@ const ParagonList: React.FunctionComponent<IParagonListProps> = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/data1`)
+      .get(`http://localhost:3001/data3`)
       .then((res) => {
         setData(res.data);
         setIsPending(false)
