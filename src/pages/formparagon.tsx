@@ -1,13 +1,16 @@
 import axios from "axios";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import * as React from "react";
 import {useState} from 'react'
+import logoNovo from "../../public/assets/Paragon/LogoNovoClub.png"
 
 interface IFormParagonProps {}
 
 const FormParagon: React.FunctionComponent<IFormParagonProps> = (props) => {
     const [kata, setKata] = useState("")
     const [isPending, setIsPending] = useState(false)
+    const [berhasil, setBerhasil] = useState(false)
 
     const router = useRouter()
 
@@ -24,7 +27,8 @@ const FormParagon: React.FunctionComponent<IFormParagonProps> = (props) => {
             });
 
             if (postResponse.status === 201) {
-                router.push("/paragonlist");
+              setBerhasil(true)
+              setKata("")
             }
         } catch (error) {
             console.error(error);
@@ -35,14 +39,26 @@ const FormParagon: React.FunctionComponent<IFormParagonProps> = (props) => {
 
   return (
     <>
-      <div>
-        <h2>Form Paragon</h2>
-        <form className="formParagon" onSubmit={handleSubmit}>
-          <label>Input kata-kata</label>
-          <input type="text" required value={kata} onChange={(e) => setKata(e.target.value)}/>
+      <div className="containerFormParagon">
+        <div className="containerInputFormParagon">
+          <Image className="imageNovo" src={logoNovo} alt="logoNovo"></Image>
+          <form className="formParagon" onSubmit={handleSubmit}>
+            <h1>What is your opinion?</h1>
 
-          { isPending ? (<button>Submitting...</button>) : (<button>Submit</button>) }
-        </form>
+            <div className="inputWrapper">
+            <input 
+                  type="text" 
+                  required value={kata} 
+                  placeholder="Enter a word..." 
+                  onChange={(e) => setKata(e.target.value)}
+                  maxLength={40}/>
+            
+            <p>You can submit more than one response.</p>
+            { berhasil ? (<p>Thankyou, we receive your input! Add another if you want</p>) : null }
+            <button className="submit-button">Submit</button>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );
