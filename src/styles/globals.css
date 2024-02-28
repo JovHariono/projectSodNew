@@ -1378,7 +1378,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 .scroll p {
   font-size: 5em;
-  color: #ffffff;
+  color: black;
   font-weight: bold;
   margin-top: 5vh;
   margin-bottom: 5vh;
