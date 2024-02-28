@@ -17,6 +17,16 @@ body {
   src: url("../../public/assets/font/DaysOne-Regular.ttf") format("truetype");
 }
 
+@font-face{
+  font-family: "Titan One";
+  src: url("../../public/assets/font/TitanOne-Regular.ttf") format("truetype");
+}
+
+@font-face{
+  font-family: "Figtree";
+  src: url("../../public/assets/font/Figtree-VariableFont_wght.ttf") format("truetype");
+}
+
 img {
   max-width: 100%;
   max-height: 100%;
@@ -1366,6 +1376,14 @@ Note: Beware of modifying this element as it can break the animations - you shou
   
 }
 
+.scroll-list {
+  width: 100vw;
+  height: 100vh;
+  background: url("../../public/assets/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
 
 .scroll {
   white-space: nowrap;
@@ -1390,12 +1408,16 @@ Note: Beware of modifying this element as it can break the animations - you shou
   animation: RightToLeft 20s infinite linear;
 }
 
+.RightToLeft p {
+  font-family: "Figtree";
+}
+
 @keyframes  RightToLeft {
   from {
-    transform: translateX(150%);
+    transform: translateX(200%);
   }
   to {
-    transform: translateX(-150%);
+    transform: translateX(-200%);
   }
 }
 
@@ -1403,11 +1425,15 @@ Note: Beware of modifying this element as it can break the animations - you shou
   animation: LeftToRight 20s infinite linear;
 }
 
+.LeftToRight p {
+  font-family: "Figtree";
+}
+
 @keyframes  LeftToRight {
   from {
-    transform: translateX(-150%);
+    transform: translateX(-200%);
   }
   to {
-    transform: translateX(150%);
+    transform: translateX(200%);
   }
 }
