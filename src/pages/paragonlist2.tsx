@@ -1,8 +1,7 @@
 import axios from 'axios';
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Paragon } from '../type';
-import { useRouter } from 'next/router';
 
 interface IParagonListProps {
 }

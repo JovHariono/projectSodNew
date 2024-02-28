@@ -28,11 +28,11 @@ const ParagonDetail: React.FunctionComponent<IParagonDetailProps> = (props) => {
 
     if(deleteKata){
         axios
-            .delete(`http://localhost:3001/data3/${id}`)
+            .delete(`http://localhost:3001/data2/${id}`)
             .then((res) => {
                 if(res.status === 200){
                     alert("berhasil delete data")
-                    router.push("/paragonlist")
+                    router.push("/paragonlistall")
                 }
             })
             .catch((err) => console.log(err))

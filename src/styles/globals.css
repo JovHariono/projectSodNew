@@ -1418,3 +1418,21 @@ Note: Beware of modifying this element as it can break the animations - you shou
     transform: translateX(200%);
   }
 }
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-holder {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.data-item {
+  font-size: 14px;
+  border: 0.5px solid black;
+  cursor: pointer;
+  margin: 5px 0;
+  padding: 2px;
+}

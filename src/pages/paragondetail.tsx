@@ -15,7 +15,7 @@ const ParagonDetail: React.FunctionComponent<IParagonDetailProps> = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/data3/${id}`)
+      .get(`http://localhost:3001/data1/${id}`)
       .then((res) => {
         setData(res.data)
         setIsPending(false)
@@ -32,7 +32,7 @@ const ParagonDetail: React.FunctionComponent<IParagonDetailProps> = (props) => {
             .then((res) => {
                 if(res.status === 200){
                     alert("berhasil delete data")
-                    router.push("/paragonlist")
+                    router.push("/paragonlistall")
                 }
             })
             .catch((err) => console.log(err))
