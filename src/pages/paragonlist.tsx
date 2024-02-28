@@ -16,7 +16,7 @@ const ParagonList: React.FunctionComponent<IParagonListProps> = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/data1`)
+      .get(`http://localhost:3001/data3?_sort=id&_order=desc&_limit=10`)
       .then((res) => {
         setData(res.data);
         setIsPending(false)
@@ -24,10 +24,23 @@ const ParagonList: React.FunctionComponent<IParagonListProps> = (props) => {
       .catch((err) => console.log(err))
   }, [])
 
+  useEffect(() => {
+  }, [data])
+
+  setInterval(() => {
+    axios
+      .get(`http://localhost:3001/data3?_sort=id&_order=desc&_limit=10`)
+      .then((res) => {
+        setData(res.data);
+        setIsPending(false)
+      })
+      .catch((err) => console.log(err))
+  }, 20000);
+
   return (
     <>
-      <div>
-        <h2>Paragon List</h2>
+      <div className='scroll-list'>
+        {/* <h2>Paragon List</h2>
         {pending && <div>Loading...</div>}
         {data.map((data) => {
           return (
@@ -38,13 +51,37 @@ const ParagonList: React.FunctionComponent<IParagonListProps> = (props) => {
               })
             }}>{data.kata}</div>
           )
-        })}
+        })} */}
           <div className="scroll">
             <div className="RightToLeft">
-              <p>Lorem ipsum dolor sit amet consectetur</p>
+              <p>{data.length > 0 ? data[0].kata: ""}</p>
             </div>
             <div className="LeftToRight">
-              <p>Sed do eiusmod tempor incididunt</p>
+              <p>{data.length > 1 ? data[1].kata: ""}</p>
+            </div>
+            <div className="RightToLeft">
+              <p>{data.length > 2 ? data[2].kata: ""}</p>
+            </div>
+            <div className="LeftToRight">
+              <p>{data.length > 3 ? data[3].kata: ""}</p>
+            </div>
+            <div className="RightToLeft">
+              <p>{data.length > 4 ? data[4].kata: ""}</p>
+            </div>
+            <div className="LeftToRight">
+              <p>{data.length > 5 ? data[5].kata: ""}</p>
+            </div>
+            <div className="RightToLeft">
+              <p>{data.length > 6 ? data[6].kata: ""}</p>
+            </div>
+            <div className="LeftToRight">
+              <p>{data.length > 7 ? data[7].kata: ""}</p>
+            </div>
+            <div className="RightToLeft">
+              <p>{data.length > 8 ? data[8].kata: ""}</p>
+            </div>
+            <div className="LeftToRight">
+              <p>{data.length > 9 ? data[9].kata: ""}</p>
             </div>
           </div>
       </div>

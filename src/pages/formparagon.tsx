@@ -17,12 +17,11 @@ const FormParagon: React.FunctionComponent<IFormParagonProps> = (props) => {
         e.preventDefault();
         
         try {
-
             const postData = {
                 kata,
             };
 
-            const postResponse = await axios.post("http://localhost:3001/data2", postData, {
+            const postResponse = await axios.post("http://localhost:3001/data3", postData, {
                 headers: { "Content-Type": "application/json" },
             });
 
