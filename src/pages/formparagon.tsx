@@ -10,6 +10,7 @@ interface IFormParagonProps {}
 const FormParagon: React.FunctionComponent<IFormParagonProps> = (props) => {
     const [kata, setKata] = useState("")
     const [isPending, setIsPending] = useState(false)
+    const [berhasil, setBerhasil] = useState(false)
 
     const router = useRouter()
 
@@ -26,7 +27,8 @@ const FormParagon: React.FunctionComponent<IFormParagonProps> = (props) => {
             });
 
             if (postResponse.status === 201) {
-                window.location.reload()
+              setBerhasil(true)
+              setKata("")
             }
         } catch (error) {
             console.error(error);
@@ -52,7 +54,8 @@ const FormParagon: React.FunctionComponent<IFormParagonProps> = (props) => {
                   maxLength={40}/>
             
             <p>You can submit more than one response.</p>
-            { isPending ? (<button className="submit-button">Submited...</button>) : (<button className="submit-button">Submit</button>) }
+            { berhasil ? (<p>Thankyou, we receive your input! Add another if you want</p>) : null }
+            <button className="submit-button">Submit</button>
             </div>
           </form>
         </div>
