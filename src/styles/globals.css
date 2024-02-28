@@ -954,19 +954,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 /* swiper */
 
-.formParagon {
-  display: flex;
-  flex-direction: column;
-}
-
-.formParagon input {
-  width: 15%;
-}
-
-.formParagon button {
-  width: 15%;
-}
-
 @media only screen and (max-width: 1300px){
   .containerVideoHome{
     padding-left: 5%;
@@ -1361,9 +1348,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
     padding-bottom: 1rem;
     width: 18rem !important;
     height: 18rem !important;
-  }
-
-  
+  }  
 }
 
 

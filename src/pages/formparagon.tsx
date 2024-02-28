@@ -1,7 +1,9 @@
 import axios from "axios";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import * as React from "react";
 import {useState} from 'react'
+import logoNovo from "../../public/assets/Paragon/LogoNovoClub.png"
 
 interface IFormParagonProps {}
 
@@ -15,15 +17,8 @@ const FormParagon: React.FunctionComponent<IFormParagonProps> = (props) => {
         e.preventDefault();
         
         try {
-            // Fetch the last used ID from the server
-            // const response = await axios.get("http://localhost:3001/data?_sort=id&_order=desc&_limit=1");
-            // const lastItem = response.data[0];
-            // const lastUsedId = lastItem ? lastItem.id : 0;
-
-            // const newId = lastUsedId + 1;
 
             const postData = {
-                // id: newId,
                 kata,
             };
 
@@ -43,14 +38,25 @@ const FormParagon: React.FunctionComponent<IFormParagonProps> = (props) => {
 
   return (
     <>
-      <div>
-        <h2>Form Paragon</h2>
-        <form className="formParagon" onSubmit={handleSubmit}>
-          <label>Input kata-kata</label>
-          <input type="text" required value={kata} onChange={(e) => setKata(e.target.value)}/>
+      <div className="containerFormParagon">
+        <div className="containerInputFormParagon">
+          <Image className="imageNovo" src={logoNovo} alt="logoNovo"></Image>
+          <form className="formParagon" onSubmit={handleSubmit}>
+            <h1>What is your opinion?</h1>
 
-          { isPending ? (<button>Submitting...</button>) : (<button>Submit</button>) }
-        </form>
+            <div className="inputWrapper">
+            <input 
+                  type="text" 
+                  required value={kata} 
+                  placeholder="Enter a word..." 
+                  onChange={(e) => setKata(e.target.value)}
+                  maxLength={40}/>
+            
+            <p>You can submit more than one response.</p>
+            { isPending ? (<button className="submit-button">Submitting...</button>) : (<button className="submit-button">Submit</button>) }
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );
