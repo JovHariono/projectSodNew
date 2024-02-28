@@ -26,7 +26,7 @@ const FormParagon: React.FunctionComponent<IFormParagonProps> = (props) => {
             });
 
             if (postResponse.status === 201) {
-                router.push("/paragonlist");
+                window.location.reload()
             }
         } catch (error) {
             console.error(error);
@@ -52,7 +52,7 @@ const FormParagon: React.FunctionComponent<IFormParagonProps> = (props) => {
                   maxLength={40}/>
             
             <p>You can submit more than one response.</p>
-            { isPending ? (<button className="submit-button">Submitting...</button>) : (<button className="submit-button">Submit</button>) }
+            { isPending ? (<button className="submit-button">Submited...</button>) : (<button className="submit-button">Submit</button>) }
             </div>
           </form>
         </div>
