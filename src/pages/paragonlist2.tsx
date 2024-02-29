@@ -26,24 +26,27 @@ const ParagonList: React.FunctionComponent<IParagonListProps> = (props) => {
             setData(res.data);
           })
           .catch((err) => console.log(err))
-      }, 20000);
+      }, 30000);
     }
   }, []);
 
   return (
     <>
       <div className='scroll-list'>
+        <div className='scroll-caption'>
+          <h1>Wall of Hope</h1>
+        </div>
         <div className="scroll">
-          <div className="RightToLeft">
+          <div className="RightToLeft" style={{ marginLeft: "-200px;"}}>
             <p>{data.length > 0 ? data[0].kata : ""}</p>
           </div>
-          <div className="LeftToRight">
+          <div className="LeftToRight" style={{ marginRight: "-200px;"}}>
             <p>{data.length > 1 ? data[1].kata : ""}</p>
           </div>
-          <div className="RightToLeft">
+          <div className="RightToLeft" style={{ marginLeft: "-100px;"}}>
             <p>{data.length > 2 ? data[2].kata : ""}</p>
           </div>
-          <div className="LeftToRight">
+          <div className="LeftToRight" style={{ marginRight: "-100px;"}}>
             <p>{data.length > 3 ? data[3].kata : ""}</p>
           </div>
           <div className="RightToLeft">
@@ -52,16 +55,16 @@ const ParagonList: React.FunctionComponent<IParagonListProps> = (props) => {
           <div className="LeftToRight">
             <p>{data.length > 5 ? data[5].kata : ""}</p>
           </div>
-          <div className="RightToLeft">
+          <div className="RightToLeft" style={{ marginLeft: "100px;"}}>
             <p>{data.length > 6 ? data[6].kata : ""}</p>
           </div>
-          <div className="LeftToRight">
+          <div className="LeftToRight" style={{ marginRight: "100px;"}}>
             <p>{data.length > 7 ? data[7].kata : ""}</p>
           </div>
-          <div className="RightToLeft">
+          <div className="RightToLeft" style={{ marginLeft: "200px;"}}>
             <p>{data.length > 8 ? data[8].kata : ""}</p>
           </div>
-          <div className="LeftToRight">
+          <div className="LeftToRight" style={{ marginRight: "200px;"}}>
             <p>{data.length > 9 ? data[9].kata : ""}</p>
           </div>
         </div>
