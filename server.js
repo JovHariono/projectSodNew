@@ -1,12 +1,20 @@
-const { createServer } = require('http');
+const { createServer } = require('https'); // Use 'https' module
+const { readFileSync } = require('fs');
 const { parse } = require('url');
 const next = require('next');
-const jsonServer = require('json-server'); // Add this line
+const jsonServer = require('json-server');
 
 const dev = process.env.NODE_ENV !== 'production';
 const hostname = 'localhost';
-const port = process.env.port || 8080;
-const jsonServerPort = 3001; // Set the port for json-server
+const port = process.env.PORT || 8080;
+const jsonServerPort = 3001;
+
+// Read SSL certificates
+const privateKey = readFileSync('./ssl/private-key.pem', 'utf8');
+const certificate = readFileSync('./ssl/certificate.pem', 'utf8');
+const ca = readFileSync('./ssl/ca.pem', 'utf8');
+
+const credentials = { key: privateKey, cert: certificate, ca: ca };
 
 const app = next({ dev, hostname, port });
 const handle = app.getRequestHandler();
@@ -19,8 +27,8 @@ app.prepare().then(() => {
   jsonServerApp.use(middlewares);
   jsonServerApp.use('/api', jsonRouter);
 
-  // Next.js server
-  createServer(async (req, res) => {
+  // Next.js server with HTTPS
+  createServer(credentials, async (req, res) => {
     try {
       const parsedUrl = parse(req.url, true);
       const { pathname, query } = parsedUrl;
@@ -39,11 +47,11 @@ app.prepare().then(() => {
     }
   }).listen(port, (err) => {
     if (err) throw err;
-    console.log(`> Next.js Ready on http://${hostname}:${port}`);
-  });
+    console.log(`> Next.js Ready on https://${hostname}:${port}`);
 
-  // JSON Server listen
-  jsonServerApp.listen(jsonServerPort, () => {
-    console.log(`> JSON Server Ready on http://${hostname}:${jsonServerPort}`);
+    // JSON Server listen
+    jsonServerApp.listen(jsonServerPort, () => {
+      console.log(`> JSON Server Ready on https://${hostname}:${jsonServerPort}/api`);
+    });
   });
 });

@@ -22,7 +22,7 @@ const FormParagon: React.FunctionComponent<IFormParagonProps> = (props) => {
                 kata,
             };
 
-            const postResponse = await axios.post("https://sodindonesia.com:3001/data2", postData, {
+            const postResponse = await axios.post("https://sodindonesia.com:3001/api/data2", postData, {
                 headers: { "Content-Type": "application/json" },
             });
 
@@ -43,7 +43,7 @@ const FormParagon: React.FunctionComponent<IFormParagonProps> = (props) => {
         <div className="containerInputFormParagon">
           <Image className="imageNovo" src={logoNovo} alt="logoNovo"></Image>
           <form className="formParagon" onSubmit={handleSubmit}>
-            <h1>What is your opinion?</h1>
+            <h1>Wall of Hope</h1>
 
             <div className="inputWrapper">
             <input 
